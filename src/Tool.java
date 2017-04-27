@@ -54,5 +54,29 @@ public class Tool {
 		}
 	}
 	
+//	void getProcessingTime(Job **jobs,int nbJobs, double* processingTimes,int* jobsParMachines){
+//
+//	    /*
+//	     * Calcule le temps de traitement cumulé des tâches de machines
+//	     */
+//	    for(int i=0;i<NB_MACHINES;i++){
+//	        processingTimes[i] = 0.;
+//	        jobsParMachines[i] = 0;
+//	    }
+//	    for(int i=0;i<nbJobs;i++){
+//	        for(int j=0;j<NB_MACHINES;j++){
+//	            processingTimes[j] += jobs[i]->pt[j];
+//	            if(jobs[i]->pt[j] >0){jobsParMachines[j]++;}
+//	        }
+//	    }
+//	}
+	
+//	public void getProcessingTime(Job **jobs,int nbJobs, double* processingTimes,int* jobsParMachines){
+//		
+//	}
+	
+	
+	
+	
 	
 }
