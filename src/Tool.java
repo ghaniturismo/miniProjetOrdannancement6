@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 
 public class Tool {
 
@@ -11,8 +14,7 @@ public class Tool {
 		}
 	}
 
-	public static void fusionner (int tab[], int début, int milieu, int fin)
-	{
+	public static void fusionner (int tab[], int début, int milieu, int fin){
 		int [] old_tab = (int[]) tab.clone(); 
 	        // tab.clone est tres gourmand en temps d'execution surtout dans un algo recursif
 	        // il faudrait passer par un tableau temporaire pour stocker les données triées.
@@ -54,29 +56,38 @@ public class Tool {
 		}
 	}
 	
-//	void getProcessingTime(Job **jobs,int nbJobs, double* processingTimes,int* jobsParMachines){
-//
-//	    /*
-//	     * Calcule le temps de traitement cumulé des tâches de machines
-//	     */
-//	    for(int i=0;i<NB_MACHINES;i++){
-//	        processingTimes[i] = 0.;
-//	        jobsParMachines[i] = 0;
-//	    }
-//	    for(int i=0;i<nbJobs;i++){
-//	        for(int j=0;j<NB_MACHINES;j++){
-//	            processingTimes[j] += jobs[i]->pt[j];
-//	            if(jobs[i]->pt[j] >0){jobsParMachines[j]++;}
-//	        }
-//	    }
-//	}
 	
-//	public void getProcessingTime(Job **jobs,int nbJobs, double* processingTimes,int* jobsParMachines){
-//		
-//	}
+	void printResultTable(int[][] result, int nbJobs, int NB_MACHINES){
+	    int i, j;
+	    for (i = 0; i < NB_MACHINES; i++){
+	        System.out.print("Sequence pour machine "+ i +" : [ ");
+	        for (j = 0; j < nbJobs; j++){
+	            System.out.print(result[i][j]+ " ");
+	        }
+	        System.out.println(" ]\n");
+	    }
+	}
 	
 	
+
+	void getProcessingTime(Job jobs[], int nbJobs, double[] processingTimes,int[] jobsParMachines, int NB_MACHINES){
 	
-	
+	    /*
+	     * Calcule le temps de traitement cumulé des tâches de machines
+	     */
+	    for(int i=0;i<NB_MACHINES;i++){
+	        processingTimes[i] = 0.;
+	        jobsParMachines[i] = 0;
+	    }
+	    
+	    for(int i=0;i<nbJobs;i++){
+	        for(int j=0;j<NB_MACHINES;j++){
+	            processingTimes[j] += jobs[i].getTpsExecMachines()[j];
+	            if(jobs[i].getTpsExecMachines()[j] > 0){
+	            	jobsParMachines[j]++;
+	            }
+	        }
+	    }
+	}
 	
 }
