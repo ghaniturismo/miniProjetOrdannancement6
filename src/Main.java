@@ -9,14 +9,11 @@ public class Main{
     static final String PATH = "./configureJobs.txt";
     public static void main(String[] args){
 
-        System.out.println("Hello World!");
-
         jobList = new ArrayList<Job>();
         configureJob(jobList);
         for(Job job : jobList){
             System.out.println(job);
         }
-
 
     }
 
