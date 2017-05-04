@@ -400,7 +400,7 @@ public class IHM extends JFrame {
 	                curSolution = solver.generateSchedule();
 	                img.setIcon(ImageManager.getImage(curSolution));
 	                addInfo(curSolution.toString());
-	                addInfo("Quality:" + ((double) curSolution.getTime()) / problem.getLowerBorderOfSolution());
+	                addInfo("Qualité:" + ((double) curSolution.getTime()) / problem.getLowerBorderOfSolution());
 	            }
 	        }
 
