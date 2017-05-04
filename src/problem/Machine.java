@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * Created by Tatiyana Domanova on 5/20/14.
- */
+
 public class Machine implements Cloneable{
 
 	private int index;
@@ -75,7 +73,6 @@ public class Machine implements Cloneable{
             job.processZeroOperation(index);
             return;
         }
-//        time = job.findGap(time, length);
         time = Math.max(time, job.getFreeTime());
         schedule.put(time, job);
         job.processOperation(index, time);

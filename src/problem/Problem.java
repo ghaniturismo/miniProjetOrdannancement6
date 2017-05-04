@@ -53,7 +53,7 @@ public class Problem {
 		for (int i = 0; i < numberOfJobs; i++) {
 			sb.append(Arrays.toString(operations[i]) + "\n");
 		}
-		sb.append("Lower border of CMax = " + getLowerBorderOfSolution() + "\n");
+		sb.append("Borne inferieure de CMax = " + getLowerBorderOfSolution() + "\n");
 		return sb.toString();
 	}
 
