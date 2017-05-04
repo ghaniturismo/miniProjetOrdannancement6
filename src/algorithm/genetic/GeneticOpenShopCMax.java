@@ -114,10 +114,6 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
         this.timesToRepeat = timesToRepeat;
     }
 
-    public int getNumberOfIterations() {
-        return evolutionManager.iterations;
-    }
-
     @Override
     public Schedule generateSchedule() {
         if (maxIterations > 0) {
@@ -127,7 +123,4 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
         }
     }
 
-    public Schedule getBestAtIteration(int x) {
-        return evolutionManager.getBestAtIteration(x);
-    }
 }

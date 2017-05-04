@@ -19,11 +19,6 @@ public class LocalSearchModificationManager implements ModificationManager {
 		}
 	};
 
-	public static class Pair {
-		public int i;
-		public int j;
-	}
-
 	private MakespanManager makespanManager;
 
 	public LocalSearchModificationManager(MakespanManager makespanManager) {

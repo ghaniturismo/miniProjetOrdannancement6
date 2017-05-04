@@ -56,10 +56,6 @@ public class OpenShopSimpleMakespan implements MakespanManager {
         return index % problem.getNumberOfMachines();
     }
 
-    protected int getOperationLength(int machine, int job) {
-        return problem.getOperation(job, machine);
-    }
-
     protected int getNumberOfOperations() {
         return problem.getNumberOfMachines() * problem.getNumberOfJobs();
     }

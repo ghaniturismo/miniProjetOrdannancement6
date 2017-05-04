@@ -36,8 +36,4 @@ public class Population implements Cloneable {
         return Collections.min(individuals, (a,b) -> Long.valueOf(makespanManager.makespan(a)).compareTo(makespanManager.makespan(b)));
     }
 
-    public long getBestValue(MakespanManager makespanManager) {
-        return individuals.stream().map(i -> makespanManager.makespan(i)).min((a,b) -> a.compareTo(b)).get();
-    }
-
 }
