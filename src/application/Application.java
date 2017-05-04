@@ -18,6 +18,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.*;
 import java.util.Scanner;
 
@@ -28,16 +30,16 @@ public class Application extends JFrame {
 
     protected JLabel img = new JLabel();
 
-    protected JRadioButton approxButton = new JRadioButton("Approximate");
-    protected JRadioButton geneticButton = new JRadioButton("Genetic");
-    protected JRadioButton bruteButton = new JRadioButton("Brute");
+    protected JRadioButton approxButton = new JRadioButton("Methode d'Approximation");
+    protected JRadioButton geneticButton = new JRadioButton("Algorithme Genetique");
+    protected JRadioButton bruteButton = new JRadioButton("Methode Brute");
 
     protected JTextField sizeOfPopulationF = new JTextField("20");
     protected JTextField mutationF = new JTextField("0.05");
     protected JTextField iterationsF = new JTextField("100");
 
-    protected JRadioButton simple = new JRadioButton("Simple Scheduling");
-    protected JRadioButton modified = new JRadioButton("Optimized Scheduling");
+    protected JRadioButton simple = new JRadioButton("Ordonnancement Simple");
+    protected JRadioButton modified = new JRadioButton("Ordonnancement optimise");
 
     protected JPanel geneticParamsPanel = new JPanel();
 
@@ -56,7 +58,7 @@ public class Application extends JFrame {
         mainPanel.setLayout(new BorderLayout(10, 10));
         add(mainPanel, BorderLayout.CENTER);
 
-        mainPanel.add(new JLabel("  Input parameters:  "), BorderLayout.NORTH);
+        mainPanel.add(new JLabel("  Parametres d'entrees:  "), BorderLayout.NORTH);
 
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new BorderLayout(10, 10));
@@ -64,6 +66,46 @@ public class Application extends JFrame {
 
         inputArea.setPreferredSize(new Dimension(400, 150));
         inputArea.setEditable(true);
+        inputArea.getFont().deriveFont(Font.ITALIC);
+        inputArea.setForeground(Color.gray);
+        String param = "#Job #Machine\n" +
+                "tpsExecJob1Machine1 tpsExecJob1Machine2\n" +
+                "tpsExecJob2Machine1 tpsExecJob2Machine2";
+        inputArea.setText(param);
+
+
+        inputArea.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                inputArea.setText("");
+                inputArea.getFont().deriveFont(Font.PLAIN);
+                inputArea.setForeground(Color.black);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                if(inputArea.getText().equals("")){
+                    inputArea.getFont().deriveFont(Font.ITALIC);
+                    inputArea.setForeground(Color.gray);
+                    inputArea.setText(param);
+                }
+            }
+        });
         inputPanel.add(inputArea, BorderLayout.NORTH);
 
         approxButton.setSelected(true);
@@ -85,19 +127,19 @@ public class Application extends JFrame {
         butAlgPanel.add(geneticParamsPanel, BorderLayout.CENTER);
 
         JPanel sop = new JPanel();
-        sop.add(new JLabel("Size of population: "));
+        sop.add(new JLabel("Taille de la population: "));
         sizeOfPopulationF.setPreferredSize(new Dimension(50, 20));
         sop.add(sizeOfPopulationF);
         geneticParamsPanel.add(sop);
 
         sop = new JPanel();
-        sop.add(new JLabel("Mutstion prob.: "));
+        sop.add(new JLabel("Probabilite de mutation: "));
         mutationF.setPreferredSize(new Dimension(50, 20));
         sop.add(mutationF);
         geneticParamsPanel.add(sop);
 
         sop = new JPanel();
-        sop.add(new JLabel("Iterations: "));
+        sop.add(new JLabel("Nombre d'iterations: "));
         iterationsF.setPreferredSize(new Dimension(50, 20));
         sop.add(iterationsF);
         geneticParamsPanel.add(sop);
@@ -116,7 +158,7 @@ public class Application extends JFrame {
         inputPanel.add(butAlgPanel,
                 BorderLayout.CENTER);
 
-        JButton apply = new JButton("Apply");
+        JButton apply = new JButton("Lancer");
         apply.setPreferredSize(new Dimension(150, 30));
         apply.addActionListener(new ApplyButtonListener());
         inputPanel.add(apply, BorderLayout.SOUTH);
@@ -139,23 +181,23 @@ public class Application extends JFrame {
         add(img, BorderLayout.EAST);
 
         MenuBar mainMenu = new MenuBar();
-        Menu progremMenu = new Menu("Problem");
+        Menu progremMenu = new Menu("Probleme");
         Menu solutionMenu = new Menu("Solution");
         mainMenu.add(progremMenu);
         mainMenu.add(solutionMenu);
 
-        MenuItem loadPr = new MenuItem("Load from file");
-        MenuItem savePr = new MenuItem("Save to file");
+        MenuItem loadPr = new MenuItem("Charger parametres par fichier");
+        MenuItem savePr = new MenuItem("Sauvegarder parametres");
         progremMenu.add(loadPr);
         progremMenu.add(savePr);
 
-        MenuItem saveSolText = new MenuItem("Save to txt");
-        MenuItem saveSolIng = new MenuItem("Save image");
+        MenuItem saveSolText = new MenuItem("Sauvegarder solution (.txt)");
+        MenuItem saveSolIng = new MenuItem("Sauvegarder solution (.jpg)");
         solutionMenu.add(saveSolText);
         solutionMenu.add(saveSolIng);
 
-        MenuItem settings = new MenuItem("Brute limit");
-        Menu m = new Menu("Settings");
+        MenuItem settings = new MenuItem("Limitation methode brute");
+        Menu m = new Menu("Parametres");
         m.add(settings);
         mainMenu.add(m);
 
@@ -212,7 +254,7 @@ public class Application extends JFrame {
         saveSolText.addActionListener((e) -> {
             if (curSolution == null) {
                 clearInfoArea();
-                addInfo("No solution was found");
+                addInfo("Aucune solution trouvee");
                 return;
             }
             JFileChooser chooser = new JFileChooser();
@@ -236,7 +278,7 @@ public class Application extends JFrame {
         saveSolIng.addActionListener((e) -> {
             if (curSolution == null) {
                 clearInfoArea();
-                addInfo("No solution was found");
+                addInfo("Aucune solution trouvee");
                 return;
             }
             JFileChooser chooser = new JFileChooser();
