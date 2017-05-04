@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-
 
 public class Tool {
 
@@ -82,8 +79,8 @@ public class Tool {
 	    
 	    for(int i=0;i<nbJobs;i++){
 	        for(int j=0;j<NB_MACHINES;j++){
-	            processingTimes[j] += jobs[i].getTpsExecMachines()[j];
-	            if(jobs[i].getTpsExecMachines()[j] > 0){
+	            processingTimes[j] += jobs[i].getTpsExecMachine(j);
+	            if(jobs[i].getTpsExecMachine(j) > 0){
 	            	jobsParMachines[j]++;
 	            }
 	        }
