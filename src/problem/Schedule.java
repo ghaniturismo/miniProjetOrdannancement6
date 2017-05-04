@@ -77,6 +77,7 @@ public class Schedule implements Cloneable {
 
     public String toString() {
         StringBuffer sb = new StringBuffer();
+        sb.append("Machine : {Temps : Job;   ..} \n");
         for (Machine m : machines) {
             sb.append(m.getIndex());
             sb.append(": {");
