@@ -31,6 +31,10 @@ public class Job {
         return sb.toString();
     }
 
+    public int getTpsExecMachine(int i){
+        return this.tpsExecMachines[i];
+    }
+
     public static int getNbMachines() {
         return NB_MACHINES;
     }
