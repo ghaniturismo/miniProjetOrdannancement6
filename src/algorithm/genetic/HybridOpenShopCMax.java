@@ -20,9 +20,6 @@ import algorithm.genetic.modification.ModificationManager;
 import problem.Problem;
 import problem.Schedule;
 
-/**
- * Created by TDiva on 5/9/16.
- */
 public class HybridOpenShopCMax extends BaseSolver implements Solver {
 
     private MakespanManager makespanManager;

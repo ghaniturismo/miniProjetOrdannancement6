@@ -1,24 +1,12 @@
 package algorithm.approximate;
 
-import java.util.List;
-
 import problem.Problem;
 import problem.Schedule;
 
-@Deprecated
 public class ApproximateFlowShopCMax {
 
 	private Problem problem;
 	
-	private Schedule generateForTwo(Problem p1) {
-//		List<Integer>
-		return new Schedule(p1);
-	}
-	
-	private Schedule join(List<Schedule> list) {
-		return new Schedule(problem);
-	}
-
 	public Schedule generateSchedule(Problem p) {
 		problem = p;
 		if (p.getNumberOfMachines() % 2 == 1) {

@@ -17,9 +17,6 @@ import algorithm.genetic.core.selection.SelectionManager;
 import problem.Problem;
 import problem.Schedule;
 
-/**
- * Created by TDiva on 5/9/16.
- */
 public class GeneticOpenShopCMax extends BaseSolver implements Solver {
 
     private MakespanManager makespanManager;

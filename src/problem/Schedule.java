@@ -3,9 +3,6 @@ package problem;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Tatiyana Domanova on 5/20/14.
- */
 public class Schedule implements Cloneable {
 
     private Problem problem;

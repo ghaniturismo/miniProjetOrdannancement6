@@ -84,7 +84,6 @@ public class HybridMakespanManager extends OpenShopMakespan {
 			}
 
 		}
-//		System.out.println();
 		return schedule;
 	}
 

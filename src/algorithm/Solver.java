@@ -1,6 +1,5 @@
 package algorithm;
 
-import problem.Problem;
 import problem.Schedule;
 
 /**

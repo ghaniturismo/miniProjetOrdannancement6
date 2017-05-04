@@ -33,12 +33,10 @@ public class OpenShopSimpleMakespan implements MakespanManager {
     @Override
     public long makespan(BaseChromosome ch) {
         return getCachedScheduleTime(ch);
-//        return translate(ch).getTime();
     }
 
     public Schedule translate(BaseChromosome chromosome) {
-//        System.out.println("Simple");
-//        System.out.println(chromosome);
+
         Schedule schedule = new Schedule(problem);
         for (int i = 0; i < chromosome.getLength(); i++) {
             int gen = chromosome.getGen(i);
@@ -46,7 +44,6 @@ public class OpenShopSimpleMakespan implements MakespanManager {
             int job = getOperationJob(gen);
             schedule.simplySchedule(machine, job);
 //            System.out.println(gen + " = " + machine + ": j" + job + "[" + getOperationLength(machine, job) + "]");
-//            System.out.println(schedule);
         }
         return schedule;
     }

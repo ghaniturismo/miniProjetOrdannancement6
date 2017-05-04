@@ -8,9 +8,6 @@ import problem.Schedule;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by TDiva on 5/22/16.
- */
 public class BruteOpenShop extends BaseSolver implements Solver {
 
     private final int maxSteps;
