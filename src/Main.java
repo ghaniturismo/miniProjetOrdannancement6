@@ -44,6 +44,7 @@ public class Main{
                 }
                 job.initJob(tempsExec, weight);
                 alj.add(job);
+                id++;
             }
 
             fichier.close();
