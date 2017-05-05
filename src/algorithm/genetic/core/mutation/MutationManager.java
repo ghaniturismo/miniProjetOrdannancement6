@@ -4,7 +4,7 @@ import algorithm.genetic.core.Population;
 
 public interface MutationManager {
 
-	void mutation(Population p);
+	void mutation(Population population);
 
 	enum MutationManagerType {
 		SWAP_MUTATION;

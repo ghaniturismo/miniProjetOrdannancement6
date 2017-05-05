@@ -30,16 +30,8 @@ public class Job implements Cloneable {
         return index;
     }
 
-    public List<Integer> getOperations() {
-        return operations;
-    }
-
     public int getOperationLength(int index) {
         return operations.get(index);
-    }
-
-    public boolean isZeroOperation(int index) {
-        return operations.get(index) == 0;
     }
 
     public void processOperation(int index, long startTime) {

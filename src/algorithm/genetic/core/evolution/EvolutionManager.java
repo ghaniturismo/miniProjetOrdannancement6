@@ -32,19 +32,19 @@ public class EvolutionManager {
         }
     };
 
-    public EvolutionManager(CrossoverManager cr, MutationManager mt,
-                            SelectionManager slt, MakespanManager pr) {
-        crossoverManager = cr;
-        mutationManager = mt;
-        selectionManager = slt;
-        makespanManager = pr;
+    public EvolutionManager(CrossoverManager crossoverManager, MutationManager mutationManager,
+                            SelectionManager selectionManager, MakespanManager makespanManager) {
+        this.crossoverManager = crossoverManager ;
+        this.mutationManager = mutationManager;
+        this.selectionManager = selectionManager;
+        this.makespanManager = makespanManager;
     }
 
-    protected Population evolution(Population p) {
-        Population ch = crossoverManager.crossover(p);
+    protected Population evolution(Population population) {
+        Population ch = crossoverManager.crossover(population);
         mutationManager.mutation(ch);
-        ch.getIndividuals().addAll(p.getIndividuals());
-        return selectionManager.selection(ch, p.getIndividuals().size());
+        ch.getIndividuals().addAll(population.getIndividuals());
+        return selectionManager.selection(ch, population.getIndividuals().size());
     }
 
     public Schedule generateSchedule(int iterations, int size) {
@@ -61,29 +61,6 @@ public class EvolutionManager {
         BaseChromosome best = p.getBest(makespanManager);
 
         return makespanManager.translate(best);
-    }
-
-    public Schedule generateSchedule(double coef, int size) {
-        int it = 0;
-        bests = new ArrayList<>();
-        Population p = makespanManager.createPopulation(size);
-        BaseChromosome bestc = null, worstc = null;
-        long best = 0, worst = 0;
-        do {
-            it++;
-            p = evolution(p);
-            bestc = Collections.min(p.getIndividuals(), chComp);
-            worstc = Collections.max(p.getIndividuals(), chComp);
-            best = makespanManager.makespan(bestc);
-            worst = makespanManager.makespan(worstc);
-            bests.add(bestc);
-        } while (((double) (worst - best)) / worst > coef);
-
-        this.iterations = it;
-        BaseChromosome bestC = Collections.min(p.getIndividuals(), chComp);
-        // System.out.println("\nBest\t" + bestC);
-        return makespanManager.translate(bestC);
-
     }
 
     public Schedule generateSchedule(double coef, int timesToRepeat, int size) {
@@ -109,13 +86,7 @@ public class EvolutionManager {
 
         this.iterations = bests.size();
         BaseChromosome bestC = Collections.min(p.getIndividuals(), chComp);
-        // System.out.println("\nBest\t" + bestC);
         return makespanManager.translate(bestC);
 
-    }
-
-    public Schedule getBestAtIteration(int x) {
-        if (x > bests.size()) return null;
-        return makespanManager.translate(bests.get(x-1));
     }
 }

@@ -6,7 +6,4 @@ public interface ModificationManager {
 
 	 void modify(Population p);
 
-	enum ModificationManagerType {
-		LOCAL_SEARCH_MODIFICATION;
-	}
 }

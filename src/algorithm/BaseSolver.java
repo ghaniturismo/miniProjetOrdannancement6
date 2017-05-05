@@ -6,7 +6,7 @@ public abstract class BaseSolver implements Solver{
 
     protected Problem problem;
 
-    public BaseSolver(Problem p) {
-        this.problem = p;
+    public BaseSolver(Problem problem) {
+        this.problem = problem;
     }
 }

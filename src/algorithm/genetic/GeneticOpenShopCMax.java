@@ -34,7 +34,7 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
     private double equalityCoeff;
     private int timesToRepeat;
 
-    public GeneticOpenShopCMax(Problem p,
+    public GeneticOpenShopCMax(Problem problem,
                                MakespanManager.MakespanManagerType makespanManagerType,
                                ParentingManager.ParentingManagerType parentingManagerType,
                                CrossoverManager.CrossoverManagerType crossoverManagerType,
@@ -46,7 +46,7 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
                                double equalityCoeff
 
     ) {
-        this(p, makespanManagerType, parentingManagerType, crossoverManagerType, mutationManagerType, mutation,
+        this(problem, makespanManagerType, parentingManagerType, crossoverManagerType, mutationManagerType, mutation,
                 selectionManagerType,
                 sizeOfPopulation,
                 iterations,
@@ -54,7 +54,7 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
         1);
     }
 
-    public GeneticOpenShopCMax(Problem p,
+    public GeneticOpenShopCMax(Problem problem,
                                MakespanManager.MakespanManagerType makespanManagerType,
                                ParentingManager.ParentingManagerType parentingManagerType,
                                CrossoverManager.CrossoverManagerType crossoverManagerType,
@@ -66,13 +66,13 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
                                double equalityCoeff,
                                int timesToRepeat
     ) {
-        super(p);
+        super(problem);
         switch (makespanManagerType) {
             case OPEN_SHOP_SIMPLE:
-                makespanManager = new OpenShopSimpleMakespan(p);
+                makespanManager = new OpenShopSimpleMakespan(problem);
                 break;
             case OPEN_SHOP_MODIFIED:
-                makespanManager = new OpenShopMakespan(p);
+                makespanManager = new OpenShopMakespan(problem);
                 break;
             default:
                 throw new UnsupportedOperationException("Makespan manager type " + makespanManagerType.name() + " is not supported");

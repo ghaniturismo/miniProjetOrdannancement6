@@ -8,6 +8,5 @@ public interface CrossoverManager {
 
 	enum CrossoverManagerType {
 		RANDOM_CROSSOVER,
-		HYBRID_CROSSOVER;
 	}
 }

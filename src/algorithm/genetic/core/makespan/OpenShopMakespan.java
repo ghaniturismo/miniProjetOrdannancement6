@@ -15,8 +15,8 @@ public class OpenShopMakespan implements MakespanManager {
 
     protected Problem problem;
 
-    public OpenShopMakespan(Problem p) {
-        problem = p;
+    public OpenShopMakespan(Problem problem) {
+        this.problem = problem;
     }
 
     protected Map<BaseChromosome, Long> cache = new HashMap<>();

@@ -67,9 +67,6 @@ public class RandomCrossover implements CrossoverManager {
 			set2.add(c);
 			c2.set(i, c);
 		}
-
-		// System.out.println(p1 + "\t" + p2);
-		// System.out.println(c1 + "\t" + c2);
 		return new Pair<>(p1.clone(c1), p2.clone(c2));
 	}
 

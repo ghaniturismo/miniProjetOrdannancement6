@@ -46,12 +46,6 @@ public class Schedule implements Cloneable {
         machines.get(getOperationMachine(op)).simplyAddJob(jobs.get(getOperationJob(op)));
     }
 
-    public boolean isProcessedOperation(int x) {
-        Machine machine = machines.get(getOperationMachine(x));
-        Job job = jobs.get(getOperationJob(x));
-        return machine.completedJob(job);
-    }
-
     public int getOperationJob(int index) {
         return index / problem.getNumberOfMachines();
     }
@@ -59,11 +53,6 @@ public class Schedule implements Cloneable {
     public int getOperationMachine(int index) {
         return index % problem.getNumberOfMachines();
     }
-
-    protected int getOperationLength(int machine, int job) {
-        return problem.getOperation(job, machine);
-    }
-
 
     public long getTime() {
         long time = 0;

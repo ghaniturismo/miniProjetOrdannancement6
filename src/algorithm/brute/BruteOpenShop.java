@@ -12,9 +12,9 @@ public class BruteOpenShop extends BaseSolver implements Solver {
 
     private final int maxSteps;
 
-    public BruteOpenShop(Problem p) {
-        super(p);
-        maxSteps = p.getNumberOfJobs() * p.getNumberOfMachines();
+    public BruteOpenShop(Problem problem) {
+        super(problem);
+        maxSteps = problem.getNumberOfJobs() * problem.getNumberOfMachines();
     }
 
     private Long upperBound;

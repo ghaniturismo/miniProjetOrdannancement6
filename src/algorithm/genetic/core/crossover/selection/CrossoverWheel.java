@@ -27,8 +27,6 @@ public class CrossoverWheel implements ParentingManager {
 		wheel = new TreeMap<>();
 		for (BaseChromosome chromosome : population.getIndividuals()) {
 			size++;
-			// TODO: add criteria of quality
-			// size+=BaseChromosome.getValue();
 			wheel.put(size, chromosome);
 		}
 	}
