@@ -90,5 +90,4 @@ public class Machine implements Cloneable{
 		return sb.toString();
 	}
 
-
 }

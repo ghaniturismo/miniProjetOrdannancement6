@@ -10,14 +10,6 @@ import java.util.Random;
 
 public class ImageManager {
 
-    public static int getImageWidth() {
-        return WIDTH + 2 * MARGIN;
-    }
-
-    public static int getImageHeight() {
-        return HEIGHT + 2 * MARGIN;
-    }
-
     public static final int WIDTH = 600;
     public static final int HEIGHT = 600;
 
@@ -39,7 +31,7 @@ public class ImageManager {
         return new Point(px, py);
     }
 
-    public static void drawAxes(Graphics2D g, double xCoeff, double yCoeff) {
+    public static void drawAxes(Graphics2D g, double xCoeff) {
         g.setColor(Color.BLACK);
         g.drawLine(MARGIN-1, HEIGHT + MARGIN, WIDTH + MARGIN-1, HEIGHT + MARGIN);
         g.drawLine(MARGIN-1, MARGIN, MARGIN-1, HEIGHT + MARGIN);
@@ -59,13 +51,13 @@ public class ImageManager {
 
     public static final Color[] AVAILABLE_COLORS = {
             Color.BLUE,
-            Color.RED,
-            Color.GREEN,
+            Color.pink,
+            Color.LIGHT_GRAY,
             Color.CYAN,
             Color.ORANGE,
             Color.LIGHT_GRAY,
-            Color.YELLOW,
-            Color.PINK,
+            Color.RED,
+            Color.GREEN,
             Color.DARK_GRAY,
     };
 
@@ -112,19 +104,19 @@ public class ImageManager {
 
 
         if (schedule == null) {
-            drawAxes(g, 1, 1);
+            drawAxes(g, 1);
             return img;
         }
 
         double xCoeff = ((double) (WIDTH)) / schedule.getTime();
         double yCoeff = ((double) (HEIGHT)) / (schedule.getMachines().size() + 1);
 
-        drawAxes(g, xCoeff, yCoeff);
+        drawAxes(g, xCoeff);
         g.setFont(new Font("Arial", 3, 16));
 
         for (int m = 0; m < schedule.getMachines().size(); m++) {
             Point p = getImageCoordinate(0, m+1, xCoeff, yCoeff);
-            g.drawString("M" + m, 0, p.y);
+            g.drawString("M" + (m+1), 0, p.y);
         }
 
         for (Machine m : schedule.getMachines()) {
@@ -134,6 +126,14 @@ public class ImageManager {
         }
 
         return img;
+    }
+
+    public static int getImageWidth() {
+        return WIDTH + 2 * MARGIN;
+    }
+
+    public static int getImageHeight() {
+        return HEIGHT + 2 * MARGIN;
     }
 
 }
