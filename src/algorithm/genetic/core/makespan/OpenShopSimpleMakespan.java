@@ -43,7 +43,6 @@ public class OpenShopSimpleMakespan implements MakespanManager {
             int machine = getOperationMachine(gen);
             int job = getOperationJob(gen);
             schedule.simplySchedule(machine, job);
-//            System.out.println(gen + " = " + machine + ": j" + job + "[" + getOperationLength(machine, job) + "]");
         }
         return schedule;
     }

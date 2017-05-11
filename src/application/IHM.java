@@ -404,7 +404,6 @@ public class IHM extends JFrame {
 	            }
 	        }
 
-
 	    }
 
 }
