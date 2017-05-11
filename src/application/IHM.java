@@ -37,7 +37,7 @@ public class IHM extends JFrame {
 	    protected JRadioButton geneticButton = new JRadioButton("Algorithme Genetique");
 	    protected JRadioButton bruteButton = new JRadioButton("Methode Brute");
 
-	    protected JTextField sizeOfPopulationF = new JTextField("20");
+	    protected JTextField sizeOfPopulationF = new JTextField("100");
 	    protected JTextField mutationF = new JTextField("0.05");
 	    protected JTextField iterationsF = new JTextField("100");
 
