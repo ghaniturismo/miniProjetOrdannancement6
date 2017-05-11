@@ -36,7 +36,7 @@ public class Problem {
 		StringBuffer sb = new StringBuffer();
 		sb.append(String.format("Jobs: %d\n", numberOfJobs));
 		sb.append(String.format("Machines: %d\n", numberOfMachines));
-		sb.append("operations:\n");
+		sb.append("Operations:\n");
 		for (int i = 0; i < numberOfJobs; i++) {
 			sb.append(Arrays.toString(operations[i]) + "\n");
 		}
