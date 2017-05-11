@@ -232,7 +232,7 @@ public class IHM extends JFrame {
 	                    inputArea.setText(sb.toString());
 	                } catch (FileNotFoundException ex) {
 	                    clearInfoArea();
-	                    addInfo("File " + f.getName() + " not found");
+	                    addInfo("Fichier " + f.getName() + " non trouvé");
 	                }
 	            }
 	        });
@@ -251,7 +251,7 @@ public class IHM extends JFrame {
 	                    sc.write(inputArea.getText());
 	                } catch (FileNotFoundException ex) {
 	                    clearInfoArea();
-	                    addInfo("File " + f.getName() + " not found");
+	                    addInfo("Fichier " + f.getName() + " non trouvé");
 	                }
 	            }
 	        });
@@ -275,7 +275,7 @@ public class IHM extends JFrame {
 	                    sc.write(curSolution.toString());
 	                } catch (FileNotFoundException ex) {
 	                    clearInfoArea();
-	                    addInfo("File " + f.getName() + " not found");
+	                    addInfo("Fichier " + f.getName() + " non trouvé");
 	                }
 	            }
 	        });
@@ -299,10 +299,10 @@ public class IHM extends JFrame {
 	                    ImageIO.write(ImageManager.getBufferedImage(curSolution), "jpg", sc);
 	                } catch (FileNotFoundException ex) {
 	                    clearInfoArea();
-	                    addInfo("File " + f.getName() + " not found");
+	                    addInfo("Fichier " + f.getName() + " non trouvé");
 	                } catch (IOException e1) {
 	                    clearInfoArea();
-	                    addInfo("Error while saving image: " + e1.getMessage());
+	                    addInfo("Erreur durant la sauvegarde de l'image " + e1.getMessage());
 	                }
 	            }
 	        });
@@ -310,7 +310,7 @@ public class IHM extends JFrame {
 	        settings.addActionListener((e) -> {
 	            String limit =  JOptionPane.showInputDialog(
 	                    this,
-	                    "Brute algorithm limit on operations:",
+	                    "Via la méthode Brute, l'algorithme est limité par les operations:",
 	                    String.valueOf(bruteLimitOnOperations));
 	            if (limit != null) {
 	                bruteLimitOnOperations = Integer.valueOf(limit);
@@ -350,34 +350,34 @@ public class IHM extends JFrame {
 
 	            Solver solver = null;
 	            if (bruteButton.isSelected()) {
-	                addInfo("Brute algorithm:");
+	                addInfo("Algorithme Brute:");
 	                if (problem.getNumberOfMachines() * problem.getNumberOfJobs() > bruteLimitOnOperations) {
-	                    addInfo("Cannot proceed: \nnumber of operations exceed max = " + bruteLimitOnOperations);
-	                    addInfo("Solution will take too much time. \nTry approximate of genetic algorithm");
+	                    addInfo("Ne peut pas continuer : \nle nombre d'opérations à réaliser dépasse le maximum = " + bruteLimitOnOperations);
+	                    addInfo("La résolution prendrait trop de temps à être réalisée. \nVeuillez essayer avec l'algorithme Génétique.");
 	                    return;
 	                }
 	                solver = new BruteOpenShop(problem);
 	            } else if (approxButton.isSelected()) {
-	                addInfo("Approximate algorithm:");
+	                addInfo("Algorithme d'approximation");
 	                solver = new ApproximateOpenShopCMax(problem);
 	            } else if (geneticButton.isSelected()) {
-	                addInfo("Genetic algorithm:");
+	                addInfo("Algorithme génétique");
 	                MakespanManager.MakespanManagerType makespanManager = null;
 	                if (simple.isSelected()) {
 	                    makespanManager = MakespanManager.MakespanManagerType.OPEN_SHOP_SIMPLE;
-	                    addInfo("Simple scheduling");
+	                    addInfo("Ordonnancement simple");
 	                } else if (modified.isSelected()) {
 	                    makespanManager = MakespanManager.MakespanManagerType.OPEN_SHOP_MODIFIED;
-	                    addInfo("Optimized scheduling");
+	                    addInfo("Ordonnancement optimisée");
 	                } else {
-	                    addInfo("ERROR: select scheduling type");
+	                    addInfo("Erreur: veuillez selectionner un type d'ordonnancement");
 	                    return;
 	                }
 
 	                int sizeOfPopulation = Integer.valueOf(sizeOfPopulationF.getText());
-	                addInfo("Size of population: " + sizeOfPopulation);
+	                addInfo("Taille de la population: " + sizeOfPopulation);
 	                double mutation = Double.valueOf(mutationF.getText());
-	                addInfo(String.format("Mutation probability: %.2f", mutation));
+	                addInfo(String.format("Probabilité de mutation: %.2f", mutation));
 	                int iterrations = Integer.valueOf(iterationsF.getText());
 	                addInfo("Iterations: " + iterrations);
 
@@ -393,7 +393,7 @@ public class IHM extends JFrame {
 	                        iterrations,
 	                        0);
 	            } else {
-	                System.out.println("ERROR!");
+	                System.out.println("Erreur !");
 	            }
 
 	            if (solver != null) {
