@@ -353,7 +353,7 @@ public class IHM extends JFrame {
 	                addInfo("Algorithme Brute:");
 	                if (problem.getNumberOfMachines() * problem.getNumberOfJobs() > bruteLimitOnOperations) {
 	                    addInfo("Ne peut pas continuer : \nle nombre d'opérations à réaliser dépasse le maximum = " + bruteLimitOnOperations);
-	                    addInfo("La résolution prendrait trop de temps à être réalisée. \nVeuillez essayer avec l'algorithme Génétique.");
+	                    addInfo("La résolution prendrait trop de temps à être réalisée. \nVeuillez essayer avec l'algorithme Génétique ou la méthode d'Approximation.");
 	                    return;
 	                }
 	                solver = new BruteOpenShop(problem);
