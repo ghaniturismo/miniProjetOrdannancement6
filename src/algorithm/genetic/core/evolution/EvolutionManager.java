@@ -2,7 +2,7 @@ package algorithm.genetic.core.evolution;
 
 import algorithm.genetic.core.Population;
 import algorithm.genetic.core.chromosomes.BaseChromosome;
-import algorithm.genetic.core.crossover.CrossoverManager;
+import algorithm.genetic.core.croisement.CroisementManager;
 import algorithm.genetic.core.makespan.MakespanManager;
 import algorithm.genetic.core.mutation.MutationManager;
 import algorithm.genetic.core.selection.SelectionManager;
@@ -17,7 +17,7 @@ public class EvolutionManager {
 
     public int iterations = 0;
 
-    protected CrossoverManager crossoverManager;
+    protected CroisementManager croisementManager;
     protected MutationManager mutationManager;
     protected SelectionManager selectionManager;
     protected MakespanManager makespanManager;
@@ -32,16 +32,16 @@ public class EvolutionManager {
         }
     };
 
-    public EvolutionManager(CrossoverManager crossoverManager, MutationManager mutationManager,
+    public EvolutionManager(CroisementManager croisementManager, MutationManager mutationManager,
                             SelectionManager selectionManager, MakespanManager makespanManager) {
-        this.crossoverManager = crossoverManager ;
+        this.croisementManager = croisementManager;
         this.mutationManager = mutationManager;
         this.selectionManager = selectionManager;
         this.makespanManager = makespanManager;
     }
 
     protected Population evolution(Population population) {
-        Population ch = crossoverManager.crossover(population);
+        Population ch = croisementManager.crossover(population);
         mutationManager.mutation(ch);
         ch.getIndividuals().addAll(population.getIndividuals());
         return selectionManager.selection(ch, population.getIndividuals().size());

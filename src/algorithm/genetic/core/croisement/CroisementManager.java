@@ -1,8 +1,8 @@
-package algorithm.genetic.core.crossover;
+package algorithm.genetic.core.croisement;
 
 import algorithm.genetic.core.Population;
 
-public interface CrossoverManager {
+public interface CroisementManager {
 
 	Population crossover(Population p);
 

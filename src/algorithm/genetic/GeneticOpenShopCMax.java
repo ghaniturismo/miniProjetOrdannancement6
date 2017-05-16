@@ -2,10 +2,10 @@ package algorithm.genetic;
 
 import algorithm.BaseSolver;
 import algorithm.Solver;
-import algorithm.genetic.core.crossover.CrossoverManager;
-import algorithm.genetic.core.crossover.RandomCrossover;
-import algorithm.genetic.core.crossover.selection.CrossoverWheel;
-import algorithm.genetic.core.crossover.selection.ParentingManager;
+import algorithm.genetic.core.croisement.CroisementManager;
+import algorithm.genetic.core.croisement.RandomCrossover;
+import algorithm.genetic.core.croisement.selection.CroisementRoue;
+import algorithm.genetic.core.croisement.selection.ParentingManager;
 import algorithm.genetic.core.evolution.EvolutionManager;
 import algorithm.genetic.core.makespan.MakespanManager;
 import algorithm.genetic.core.makespan.OpenShopMakespan;
@@ -21,7 +21,7 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
 
     private MakespanManager makespanManager;
     private ParentingManager parentingManager;
-    private CrossoverManager crossoverManager;
+    private CroisementManager croisementManager;
     private MutationManager mutationManager;
     private SelectionManager selectionManager;
 
@@ -37,7 +37,7 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
     public GeneticOpenShopCMax(Problem problem,
                                MakespanManager.MakespanManagerType makespanManagerType,
                                ParentingManager.ParentingManagerType parentingManagerType,
-                               CrossoverManager.CrossoverManagerType crossoverManagerType,
+                               CroisementManager.CrossoverManagerType crossoverManagerType,
                                MutationManager.MutationManagerType mutationManagerType,
                                double mutation,
                                SelectionManager.SelectionManagerType selectionManagerType,
@@ -57,7 +57,7 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
     public GeneticOpenShopCMax(Problem problem,
                                MakespanManager.MakespanManagerType makespanManagerType,
                                ParentingManager.ParentingManagerType parentingManagerType,
-                               CrossoverManager.CrossoverManagerType crossoverManagerType,
+                               CroisementManager.CrossoverManagerType crossoverManagerType,
                                MutationManager.MutationManagerType mutationManagerType,
                                double mutation,
                                SelectionManager.SelectionManagerType selectionManagerType,
@@ -80,14 +80,14 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
 
         switch (parentingManagerType) {
             case CROSSOVER_WHEEL:
-                this.parentingManager = new CrossoverWheel();
+                this.parentingManager = new CroisementRoue();
                 break;
             default:
                 throw new UnsupportedOperationException("Parenting manager type " + parentingManagerType.name() + " is not supported");
         }
         switch (crossoverManagerType) {
             case RANDOM_CROSSOVER:
-                this.crossoverManager = new RandomCrossover(parentingManager);
+                this.croisementManager = new RandomCrossover(parentingManager);
                 break;
             default:
                 throw new UnsupportedOperationException("Crossover manager type " + crossoverManagerType.name() + " is not supported");
@@ -106,7 +106,7 @@ public class GeneticOpenShopCMax extends BaseSolver implements Solver {
             default:
                 throw new UnsupportedOperationException("Selection manager type " + selectionManagerType.name() + " is not supported");
         }
-        evolutionManager = new EvolutionManager(crossoverManager, mutationManager, selectionManager, makespanManager);
+        evolutionManager = new EvolutionManager(croisementManager, mutationManager, selectionManager, makespanManager);
 
         this.sizeOfPopulation = sizeOfPopulation;
         this.maxIterations = iterations;

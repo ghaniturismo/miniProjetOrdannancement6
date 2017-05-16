@@ -65,39 +65,6 @@ public class Job implements Cloneable {
         }
         if (endTime - startTime > length) return startTime;
         return -1;
-
-//		boolean buf[] = new boolean[endTime - startTime];
-//		Arrays.fill(buf, true);
-//		for (int left : processed.keySet()) {
-//			int right = left + operations.get(processed.get(left));
-//			// if (left <= startTime && right >= endTime)
-//			// return -1;
-//			if (left >= startTime && left < endTime) {
-//				Arrays.fill(buf, left - startTime, right > endTime ? endTime
-//						- startTime : right - startTime, false);
-//			}
-//			if (right > startTime && right <= endTime) {
-//				Arrays.fill(buf, left < startTime ? 0 : left - startTime, right
-//						- startTime, false);
-//			}
-//		}
-//		int sum = 0;
-//		for (int i = 0; i < buf.length; i++) {
-//			if (sum == length) {
-//				return i - sum + startTime;
-//			}
-//			if (buf[i]) {
-//				sum++;
-//			} else {
-//				sum = 0;
-//			}
-//		}
-//		if (sum >= length) {
-//			return buf.length - sum + startTime;
-//		} else {
-//			return -1;
-//		}
-
     }
 
     public long findGap(long startTime, int length) {

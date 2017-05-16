@@ -1,4 +1,4 @@
-package algorithm.genetic.core.crossover.selection;
+package algorithm.genetic.core.croisement.selection;
 
 import algorithm.genetic.core.Population;
 import algorithm.genetic.core.chromosomes.BaseChromosome;

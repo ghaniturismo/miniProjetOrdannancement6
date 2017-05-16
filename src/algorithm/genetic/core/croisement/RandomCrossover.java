@@ -1,13 +1,13 @@
-package algorithm.genetic.core.crossover;
+package algorithm.genetic.core.croisement;
 
 import algorithm.genetic.core.Population;
 import algorithm.genetic.core.chromosomes.BaseChromosome;
-import algorithm.genetic.core.crossover.selection.ParentingManager;
+import algorithm.genetic.core.croisement.selection.ParentingManager;
 import org.javatuples.Pair;
 
 import java.util.*;
 
-public class RandomCrossover implements CrossoverManager {
+public class RandomCrossover implements CroisementManager {
 
 	private ParentingManager parentingManager;
 

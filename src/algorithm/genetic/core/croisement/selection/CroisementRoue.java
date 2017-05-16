@@ -1,4 +1,4 @@
-package algorithm.genetic.core.crossover.selection;
+package algorithm.genetic.core.croisement.selection;
 
 import java.util.Map;
 import java.util.Random;
@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import algorithm.genetic.core.Population;
 import algorithm.genetic.core.chromosomes.BaseChromosome;
 
-public class CrossoverWheel implements ParentingManager {
+public class CroisementRoue implements ParentingManager {
 
 	/*
 	 * Key: Right side of range Value: BaseChromosome parent
@@ -17,7 +17,7 @@ public class CrossoverWheel implements ParentingManager {
 
 	private Random random = new Random();
 
-	public CrossoverWheel() {
+	public CroisementRoue() {
 		size = 0;
 		wheel = new TreeMap<>();
 	}
